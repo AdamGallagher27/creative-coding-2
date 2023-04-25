@@ -32,36 +32,40 @@ class Plane {
     }
 
     fly() {
+
+
+
         this.posX += this.speedX
         this.posY += this.speedY
 
+        // right side
         if(this.posX > screenWidth){
-            console.log('right')
-            this.posY = (map(this.posY, 0, 500, 500, 0 ) )
+            this.posY = random(100, screenHeight - 100)
             this.posX = 0
-            console.log(this.posX)
             return
         }
 
+        // left side
         if(this.posX < 0){
-            // console.log('left')
-            this.posY = map(this.posY, 0, 500, 500, 0 )
-            this.posX = screenWidth - 5
+            this.posY = random(100, screenHeight - 100)
+            this.posX = screenHeight
             return
         }
 
+        // top
+        if(this.posY < 0) {
+            this.posY = screenHeight
+            this.posX = random(100, screenWidth - 100)
+            return
+        }
+
+        // bottom
         if(this.posY > screenHeight){
-            // console.log('bottom')
-            this.posX = -(map(this.posX, 0, 500, 500, 0 ) )
-            this.posY = screenHeight - 5
+            this.posY = 0
+            this.posX = random(100, screenWidth - 100)
             return
         }
-
-        if(this.posY < 0){
-            // console.log('top')
-            this.posX = -(map(this.posX, 0, 500, 500, 0 ) )
-            this.posY = 5 
-            return
-        }
+        
+       
     }
 }
